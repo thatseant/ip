@@ -16,13 +16,30 @@ public class Duke {
     public static void markAsDone(int taskNumber) {
         tasks[taskNumber].setDone();
         System.out.println("Nice! I've marked this task as done: ");
-        System.out.println("[✓] " + tasks[taskNumber].getName());
+        System.out.println(tasks[taskNumber].toString());
     }
 
     //Adds task at end of other tasks
     public static void addTask(String userInput) {
-        tasks[Task.getNumberOfTasks()] = new Task(userInput);
-        System.out.format("added: %s%n", userInput);
+        String taskType = userInput.split(" ")[0];
+        String taskName = userInput.split(" ", 2)[1].split("/")[0];
+
+        switch (taskType) {
+        case "todo":
+            tasks[Task.getNumberOfTasks()] = new Todo(taskName);
+            break;
+        case "deadline":
+            String deadline = userInput.split("/")[1].split(" ")[1];
+            tasks[Task.getNumberOfTasks()] = new Deadline(taskName, deadline);
+            break;
+        case "event":
+            String time = userInput.split("/")[1].split(" ")[1];
+            tasks[Task.getNumberOfTasks()] = new Event(taskName, time);
+            break;
+        }
+        System.out.format("Got it. I've added this task: %n");
+        System.out.format("%s%n", tasks[Task.getNumberOfTasks()-1].toString());
+        System.out.format("Now you have %d tasks on the list.%n", Task.getNumberOfTasks());
     }
 
     public static void main(String[] args) {
