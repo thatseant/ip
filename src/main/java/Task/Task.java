@@ -1,3 +1,5 @@
+package Task;
+
 //User inputs represented as Tasks
 public class Task {
     private boolean isDone;
@@ -27,9 +29,9 @@ public class Task {
     public String toString() {
         String tickOrCrossChar;
         if (isDone) {
-            tickOrCrossChar = "✓";
+            tickOrCrossChar = "\u2713";
         } else {
-            tickOrCrossChar = "✗";
+            tickOrCrossChar = "\u2718";
         }
 
         return String.format("[%s] %s", tickOrCrossChar, name);

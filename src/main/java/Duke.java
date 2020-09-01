@@ -1,3 +1,8 @@
+import Task.Task;
+import Task.Todo;
+import Task.Deadline;
+import Task.Event;
+
 import java.util.Scanner;
 public class Duke {
 
@@ -29,11 +34,11 @@ public class Duke {
             tasks[Task.getNumberOfTasks()] = new Todo(taskName);
             break;
         case "deadline":
-            String deadline = userInput.split("/")[1].split(" ")[1];
+            String deadline = userInput.split("/",2)[1].split(" ",2)[1];
             tasks[Task.getNumberOfTasks()] = new Deadline(taskName, deadline);
             break;
         case "event":
-            String time = userInput.split("/")[1].split(" ")[1];
+            String time = userInput.split("/", 2)[1].split(" ", 2)[1];
             tasks[Task.getNumberOfTasks()] = new Event(taskName, time);
             break;
         }
