@@ -30,7 +30,7 @@ public class Duke {
     //Adds task at end of other tasks
     public static void addTask(String userInput) {
         String taskType = userInput.split(" ")[0];
-        String taskName = userInput.split(" ", 2)[1].split("/")[0];
+        String taskName = userInput.split(" ", 2)[1].split(" /")[0];
 
         switch (taskType) {
         case "todo":
