@@ -13,6 +13,7 @@ public class Event extends Task {
         return this.time;
     }
 
+    //Adds task type indicator to super.toString which returns completion status and task name, followed by event time.
     @Override
     public String toString() {
         return String.format("[E]%s(at: %s)", super.toString(), time);

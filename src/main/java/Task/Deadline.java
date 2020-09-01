@@ -13,6 +13,7 @@ public class Deadline extends Task {
         return deadline;
     }
 
+    //Adds task type indicator to super.toString which returns completion status and task name, followed by deadline.
     @Override
     public String toString() {
         return String.format("[D]%s(by: %s)", super.toString(), deadline);

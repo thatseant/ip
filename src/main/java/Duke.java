@@ -6,8 +6,10 @@ import Task.Event;
 import java.util.Scanner;
 public class Duke {
 
+    private static final int TASKS_CAPACITY = 100;
+
     static Scanner in = new Scanner(System.in);
-    static Task[] tasks = new Task[100];
+    static Task[] tasks = new Task[TASKS_CAPACITY];
 
     //Prints tasks with completion status
     public static void displayList() {
@@ -18,7 +20,8 @@ public class Duke {
         }
     }
 
-    public static void markAsDone(int taskNumber) {
+    public static void markAsDone(String userInput) {
+        int taskNumber = Integer.parseInt(userInput.split(" ")[1]);
         tasks[taskNumber].setDone();
         System.out.println("Nice! I've marked this task as done: ");
         System.out.println(tasks[taskNumber].toString());
@@ -34,11 +37,11 @@ public class Duke {
             tasks[Task.getNumberOfTasks()] = new Todo(taskName);
             break;
         case "deadline":
-            String deadline = userInput.split("/",2)[1].split(" ",2)[1];
+            String deadline = userInput.split("/by: ")[1];
             tasks[Task.getNumberOfTasks()] = new Deadline(taskName, deadline);
             break;
         case "event":
-            String time = userInput.split("/", 2)[1].split(" ", 2)[1];
+            String time = userInput.split("/at: ")[1];
             tasks[Task.getNumberOfTasks()] = new Event(taskName, time);
             break;
         }
@@ -63,15 +66,19 @@ public class Duke {
         String userInput = in.nextLine();
 
         while (!userInput.equals("bye")) {
-            if (userInput.equals("list")) {
+            String commandType = userInput.split(" ")[0];
+            switch (commandType) {
+            case "list":
                 displayList();
-            } else if (userInput.contains("done")) {
-                int taskNumber = Integer.parseInt(userInput.replaceAll("\\D+","")) - 1;
-                markAsDone(taskNumber);
-            } else {
+                break;
+            case "done":
+                markAsDone(userInput);
+                break;
+            default:
                 addTask(userInput);
+                break;
             }
-                userInput = in.nextLine();
+            userInput = in.nextLine();
         }
 
         //Prints exit message when user says bye
