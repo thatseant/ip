@@ -2,6 +2,7 @@ import Task.Task;
 import Task.Todo;
 import Task.Deadline;
 import Task.Event;
+import Exception.InvalidCommandException;
 
 import java.util.Scanner;
 public class Duke {
@@ -21,29 +22,54 @@ public class Duke {
     }
 
     public static void markAsDone(String userInput) {
-        int taskNumber = Integer.parseInt(userInput.split(" ")[1]);
-        tasks[taskNumber].setDone();
-        System.out.println("Nice! I've marked this task as done: ");
-        System.out.println(tasks[taskNumber].toString());
+        try {
+            int taskNumber = Integer.parseInt(userInput.split(" ")[1]);
+            tasks[taskNumber-1].setDone();
+            System.out.println("Nice! I've marked this task as done: ");
+            System.out.println(tasks[taskNumber-1].toString());
+        } catch (NumberFormatException e) {
+            System.out.println("Please specify the task you would like to mark as done in integer format.");
+        } catch (NullPointerException e) {
+            System.out.println("Task not found. Please reenter command with valid task number.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Task not found. Please reenter command with valid task number.");
+        }
     }
 
     //Adds task at end of other tasks
     public static void addTask(String userInput) {
-        String taskType = userInput.split(" ")[0];
-        String taskName = userInput.split(" ", 2)[1].split(" /")[0];
+
+        String taskType = "", taskName = "";
+        try {
+            taskType = userInput.split(" ")[0];
+            taskName = userInput.split(" ", 2)[1].split(" /")[0];
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("OOPS!!! The description of " + taskType + " cannot be empty.");
+            return;
+        }
 
         switch (taskType) {
         case "todo":
             tasks[Task.getNumberOfTasks()] = new Todo(taskName);
             break;
         case "deadline":
-            String deadline = userInput.split("/by: ")[1];
-            tasks[Task.getNumberOfTasks()] = new Deadline(taskName, deadline);
+            try {
+                String deadline = userInput.split("/by: ")[1];
+                tasks[Task.getNumberOfTasks()] = new Deadline(taskName, deadline);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Missing deadline or deadline not specified in correct format.");
+                return;
+            }
             break;
         case "event":
-            String time = userInput.split("/at: ")[1];
-            tasks[Task.getNumberOfTasks()] = new Event(taskName, time);
-            break;
+            try {
+                String time = userInput.split("/at: ")[1];
+                tasks[Task.getNumberOfTasks()] = new Event(taskName, time);
+                break;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Missing event time or time not specified in correct format.");
+                return;
+            }
         }
         System.out.format("Got it. I've added this task: %n");
         System.out.format("%s%n", tasks[Task.getNumberOfTasks()-1].toString());
@@ -66,17 +92,25 @@ public class Duke {
         String userInput = in.nextLine();
 
         while (!userInput.equals("bye")) {
-            String commandType = userInput.split(" ")[0];
-            switch (commandType) {
-            case "list":
-                displayList();
-                break;
-            case "done":
-                markAsDone(userInput);
-                break;
-            default:
-                addTask(userInput);
-                break;
+            try {
+                String commandType = userInput.split(" ")[0];
+                switch (commandType) {
+                case "list":
+                    displayList();
+                    break;
+                case "done":
+                    markAsDone(userInput);
+                    break;
+                case "todo":
+                case "deadline": //fallthrough
+                case "event": //fallthrough
+                    addTask(userInput);
+                    break;
+                default:
+                    throw new InvalidCommandException();
+                }
+            } catch (InvalidCommandException e) {
+                System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
             }
             userInput = in.nextLine();
         }
