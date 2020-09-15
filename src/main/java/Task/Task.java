@@ -24,6 +24,10 @@ public class Task {
         return numberOfTasks;
     }
 
+    public String toRawData() {
+        return String.format("%s | %s", isDone, name);
+    }
+
     //Returns string with task name and completion status
     @Override
     public String toString() {

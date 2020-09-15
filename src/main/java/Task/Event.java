@@ -13,6 +13,10 @@ public class Event extends Task {
         return this.time;
     }
 
+    public String toRawData() {
+        return "E | " + super.toRawData() + " | " + time;
+    }
+
     //Adds task type indicator to super.toString which returns completion status and task name, followed by event time.
     @Override
     public String toString() {
