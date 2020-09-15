@@ -4,29 +4,28 @@ import Task.Deadline;
 import Task.Event;
 import Exception.InvalidCommandException;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Duke {
 
-    private static final int TASKS_CAPACITY = 100;
-
     static Scanner in = new Scanner(System.in);
-    static Task[] tasks = new Task[TASKS_CAPACITY];
+    static ArrayList<Task> tasks = new ArrayList<>();
 
     //Prints tasks with completion status
     public static void displayList() {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i< Task.getNumberOfTasks(); i++) {
             System.out.print(i+1 + ".");
-            System.out.println(tasks[i].toString());
+            System.out.println(tasks.get(i).toString());
         }
     }
 
     public static void markAsDone(String userInput) {
         try {
             int taskNumber = Integer.parseInt(userInput.split(" ")[1]);
-            tasks[taskNumber-1].setDone();
+            tasks.get(taskNumber - 1).setDone();
             System.out.println("Nice! I've marked this task as done: ");
-            System.out.println(tasks[taskNumber-1].toString());
+            System.out.println(tasks.get(taskNumber - 1).toString());
         } catch (NumberFormatException e) {
             System.out.println("Please specify the task you would like to mark as done in integer format.");
         } catch (NullPointerException e) {
@@ -50,12 +49,12 @@ public class Duke {
 
         switch (taskType) {
         case "todo":
-            tasks[Task.getNumberOfTasks()] = new Todo(taskName);
+            tasks.add(new Todo(taskName));
             break;
         case "deadline":
             try {
-                String deadline = userInput.split("/by: ")[1];
-                tasks[Task.getNumberOfTasks()] = new Deadline(taskName, deadline);
+                String deadline = userInput.split("/by ")[1];
+                tasks.add(new Deadline(taskName, deadline));
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Missing deadline or deadline not specified in correct format.");
                 return;
@@ -63,8 +62,8 @@ public class Duke {
             break;
         case "event":
             try {
-                String time = userInput.split("/at: ")[1];
-                tasks[Task.getNumberOfTasks()] = new Event(taskName, time);
+                String time = userInput.split("/at ")[1];
+                tasks.add(new Event(taskName, time));
                 break;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Missing event time or time not specified in correct format.");
@@ -72,7 +71,7 @@ public class Duke {
             }
         }
         System.out.format("Got it. I've added this task: %n");
-        System.out.format("%s%n", tasks[Task.getNumberOfTasks()-1].toString());
+        System.out.format("%s%n", tasks.get(Task.getNumberOfTasks() - 1).toString());
         System.out.format("Now you have %d tasks on the list.%n", Task.getNumberOfTasks());
     }
 
