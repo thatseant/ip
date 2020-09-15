@@ -20,6 +20,10 @@ public class Task {
         isDone = true;
     }
 
+    public static int decrementNumberOfTasks() {
+       return --numberOfTasks;
+    }
+
     public static int getNumberOfTasks() {
         return numberOfTasks;
     }

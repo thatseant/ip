@@ -35,6 +35,23 @@ public class Duke {
         }
     }
 
+    public static void deleteTask(String userInput) {
+        try {
+            int taskNumber = Integer.parseInt(userInput.split(" ")[1]);
+            Task deletedTask = tasks.get(taskNumber - 1);
+            tasks.remove(taskNumber - 1);
+            System.out.println("Noted. I've removed this task:");
+            System.out.println(deletedTask.toString());
+            System.out.println("Now you have " + Task.decrementNumberOfTasks() + " tasks in the list.");
+        } catch (NumberFormatException e) {
+            System.out.println("Please specify the task you would like to mark as done in integer format.");
+        } catch (NullPointerException e) {
+            System.out.println("Task not found. Please reenter command with valid task number.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Task not found. Please reenter command with valid task number.");
+        }
+    }
+
     //Adds task at end of other tasks
     public static void addTask(String userInput) {
 
@@ -99,6 +116,9 @@ public class Duke {
                     break;
                 case "done":
                     markAsDone(userInput);
+                    break;
+                case "delete":
+                    deleteTask(userInput);
                     break;
                 case "todo":
                 case "deadline": //fallthrough
