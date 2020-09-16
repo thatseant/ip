@@ -5,11 +5,75 @@ import Task.Event;
 import Exception.InvalidCommandException;
 
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 public class Duke {
 
+    static String filePath = "tasks.txt";
     static Scanner in = new Scanner(System.in);
     static ArrayList<Task> tasks = new ArrayList<>();
+
+    private static void writeToFile(String filePath, String textToAdd) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+        fw.write(textToAdd);
+        fw.close();
+    }
+
+    public static void saveToFile() {
+        String fullTextToAdd = "";
+        try {
+            for (Task task: tasks) {
+                if (task != null) {
+                    fullTextToAdd += task.toRawData();
+                    fullTextToAdd += System.lineSeparator();
+                }
+            }
+            writeToFile(filePath, fullTextToAdd);
+        } catch (IOException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+    }
+
+    public static void loadFromFile() throws FileNotFoundException {
+        File f = new File(filePath); // create a File for the given file path
+        Scanner s = new Scanner(f); // create a Scanner using the File as the source
+        while (s.hasNext()) {
+                String[] taskParameters = s.nextLine().split(" \\| ");
+                String taskType = taskParameters[0];
+                Boolean isDone = Boolean.parseBoolean(taskParameters[1].trim());
+                String taskName = taskParameters[2];
+
+                switch (taskType) {
+                case "T":
+                    tasks.add(new Todo(taskName));
+                    break;
+                case "D":
+                    String date = taskParameters[3];
+                    tasks.add(new Deadline(taskName, date));
+                    break;
+                case "E":
+                    date = taskParameters[3];
+                    tasks.add(new Event(taskName, date));
+                    break;
+                default:
+                    break;
+                }
+                if (isDone) {
+                    tasks.get(Task.getNumberOfTasks()-1).setDone();
+                }
+        }
+    }
+
+    public static void readFile() {
+        try {
+            loadFromFile();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+    }
 
     //Prints tasks with completion status
     public static void displayList() {
@@ -104,6 +168,9 @@ public class Duke {
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you?");
 
+        //Load previous data from file
+        readFile();
+
         //Processes user commands
         String userInput = in.nextLine();
 
@@ -128,6 +195,7 @@ public class Duke {
                 default:
                     throw new InvalidCommandException();
                 }
+                saveToFile();
             } catch (InvalidCommandException e) {
                 System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
             }

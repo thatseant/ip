@@ -9,6 +9,10 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    public String toRawData() {
+        return "D | " + super.toRawData() + " | " + deadline;
+    }
+
     public String getDeadline() {
         return deadline;
     }

@@ -7,6 +7,10 @@ public class Todo extends Task {
         super(name);
     }
 
+    public String toRawData() {
+        return "T | " + super.toRawData();
+    }
+
     @Override
     public String toString() {
         //Adds task type indicator to super.toString which returns completion status and task name
