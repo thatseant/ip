@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
 public class Duke {
 
     static String filePath = "tasks.txt";
@@ -25,7 +26,7 @@ public class Duke {
     public static void saveToFile() {
         String fullTextToAdd = "";
         try {
-            for (Task task: tasks) {
+            for (Task task : tasks) {
                 if (task != null) {
                     fullTextToAdd += task.toRawData();
                     fullTextToAdd += System.lineSeparator();
@@ -41,29 +42,29 @@ public class Duke {
         File f = new File(filePath); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
         while (s.hasNext()) {
-                String[] taskParameters = s.nextLine().split(" \\| ");
-                String taskType = taskParameters[0];
-                Boolean isDone = Boolean.parseBoolean(taskParameters[1].trim());
-                String taskName = taskParameters[2];
+            String[] taskParameters = s.nextLine().split(" \\| ");
+            String taskType = taskParameters[0];
+            Boolean isDone = Boolean.parseBoolean(taskParameters[1].trim());
+            String taskName = taskParameters[2];
 
-                switch (taskType) {
-                case "T":
-                    tasks.add(new Todo(taskName));
-                    break;
-                case "D":
-                    String date = taskParameters[3];
-                    tasks.add(new Deadline(taskName, date));
-                    break;
-                case "E":
-                    date = taskParameters[3];
-                    tasks.add(new Event(taskName, date));
-                    break;
-                default:
-                    break;
-                }
-                if (isDone) {
-                    tasks.get(Task.getNumberOfTasks()-1).setDone();
-                }
+            switch (taskType) {
+            case "T":
+                tasks.add(new Todo(taskName));
+                break;
+            case "D":
+                String date = taskParameters[3];
+                tasks.add(new Deadline(taskName, date));
+                break;
+            case "E":
+                date = taskParameters[3];
+                tasks.add(new Event(taskName, date));
+                break;
+            default:
+                break;
+            }
+            if (isDone) {
+                tasks.get(Task.getNumberOfTasks() - 1).setDone();
+            }
         }
     }
 
@@ -78,8 +79,8 @@ public class Duke {
     //Prints tasks with completion status
     public static void displayList() {
         System.out.println("Here are the tasks in your list:");
-        for (int i = 0; i< Task.getNumberOfTasks(); i++) {
-            System.out.print(i+1 + ".");
+        for (int i = 0; i < Task.getNumberOfTasks(); i++) {
+            System.out.print(i + 1 + ".");
             System.out.println(tasks.get(i).toString());
         }
     }
