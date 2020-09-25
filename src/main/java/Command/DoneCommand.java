@@ -7,7 +7,7 @@ import Ui.Ui;
 import java.util.ArrayList;
 
 public class DoneCommand extends Command {
-    int taskNumber;
+    private int taskNumber;
     public DoneCommand(int taskNumber) {
         this.taskNumber = taskNumber;
     }
