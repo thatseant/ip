@@ -6,12 +6,26 @@ import Ui.Ui;
 
 import java.util.ArrayList;
 
+/**
+ * Command to delete task.
+ */
 public class DeleteCommand extends Command {
     private static int taskNumber;
+
+    /**
+     * Constructor.
+     * @param taskNumber index of to-be-deleted task in list.
+     */
     public DeleteCommand(int taskNumber) {
         this.taskNumber = taskNumber;
     }
 
+    /**
+     * Removes task from list, prints number of tasks left and saves updated list to file.
+     * @param tasks
+     * @param ui
+     * @param storage
+     */
     @Override
     public void execute(ArrayList<Task> tasks, Ui ui, Storage storage) {
         try {

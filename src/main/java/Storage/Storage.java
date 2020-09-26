@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 import Task.Deadline;
 import Task.Event;
-import Task.Task;
 import Task.Todo;
 
 
@@ -20,9 +19,12 @@ public class Storage {
     private String filePath;
     static ArrayList<Task> tasks = new ArrayList<>();
 
+    /**
+     * Storage constructor.
+     * @param filePath path of file to save and load tasks from.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
-        this.tasks = tasks;
     }
 
     private static void writeToFile(String filePath, String textToAdd) throws IOException {
@@ -31,6 +33,9 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Saves all tasks to data file.
+     */
     public void saveToFile() {
         String fullTextToAdd = "";
         try {
@@ -77,6 +82,10 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Processes tasks stored as raw data from data file into Task objects and returns arraylist of these Task objects.
+     * @return ArrayList of Task objects from data file.
+     */
     public ArrayList<Task> readFile() {
         try {
             return loadFromFile();
