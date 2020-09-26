@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Command to mark task as done.
  */
 public class DoneCommand extends Command {
-    int taskNumber;
+    private int taskNumber;
 
     /**
      * Constructor.

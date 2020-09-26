@@ -8,6 +8,7 @@ import Command.ByeCommand;
 import Command.TodoCommand;
 import Command.EventCommand;
 import Command.DeadlineCommand;
+import Command.FindCommand;
 import Exception.InvalidCommandException;
 
 import Storage.Storage;
@@ -30,6 +31,14 @@ public class Parser {
                     return new ByeCommand();
                 case "list":
                     command = new ListCommand();
+                    break;
+                case "find":
+                    try {
+                        String keyword = userInput.split(" ", 2)[1];
+                        command = new FindCommand(keyword);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Please enter a valid search keyword.");
+                    }
                     break;
                 case "done":
                     try {
@@ -69,6 +78,7 @@ public class Parser {
                     switch (taskType) {
                     case "todo":
                         command = new TodoCommand(taskName);
+                        break;
                     case "deadline":
                         try {
                             String deadline = userInput.split("/by ")[1];
@@ -81,7 +91,6 @@ public class Parser {
                         try {
                             String time = userInput.split("/at ")[1];
                             command = new EventCommand(taskName, time);
-                            break;
                         } catch (IndexOutOfBoundsException e) {
                             System.out.println("Missing event time or time not specified in correct format.");
                         }
