@@ -15,6 +15,12 @@ import Storage.Storage;
 
 public class Parser {
 
+    /**
+     * Parses user inputs for commands to execute and extracts additional arguments from input to send to commands.
+     * @param userInput raw input by user from command line
+     * @param storage same Storage instance used throughout entire program that stores the existing Tasks arraylist.
+     * @return Command to be executed
+     */
     public static Command parse(String userInput, Storage storage) {
             try {
                 Command command = new Command();

@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class Ui {
 
     private static Scanner in = new Scanner(System.in);
+
+    /**
+     * Prints welcome start message
+     */
     public void showWelcome() {
         String logo = "____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -18,12 +22,17 @@ public class Ui {
         System.out.println("What can I do for you?");
     }
 
+    /**
+     * @return String with user input
+     */
     public String readCommand() {
         return in.nextLine();
     }
 
+    /**
+     * Prints exit message when user says bye
+     */
     public void exitMessage() {
-        //Prints exit message when user says bye
         System.out.println("Bye. Hope to see you again soon!");
     }
 }

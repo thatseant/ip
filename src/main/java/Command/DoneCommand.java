@@ -6,12 +6,26 @@ import Ui.Ui;
 
 import java.util.ArrayList;
 
+/**
+ * Command to mark task as done.
+ */
 public class DoneCommand extends Command {
     private int taskNumber;
+
+    /**
+     * Constructor.
+     * @param taskNumber index of task on list
+     */
     public DoneCommand(int taskNumber) {
         this.taskNumber = taskNumber;
     }
 
+    /**
+     * Sets task's status to done. Prints status of task and saves updated list to file.
+     * @param tasks
+     * @param ui
+     * @param storage
+     */
     @Override
     public void execute(ArrayList<Task> tasks, Ui ui, Storage storage) {
         try {
