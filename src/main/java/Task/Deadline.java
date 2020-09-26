@@ -2,21 +2,29 @@ package Task;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
 
+    private Boolean hasProperDeadline;
     private LocalDate deadline;
     private String deadlineString;
 
     /**
      * Constructor for Deadline object.
      * @param name name of deadline task
-     * @param deadline deadline of deadline task
+     * @param deadline deadline (for date recognition: enter in yyyy-mm-dd)
      */
     public Deadline(String name, String deadline) {
         super(name);
-        this.deadline = LocalDate.parse(deadline);
         deadlineString = deadline;
+        //Regex adapted from https://stackoverflow.com/a/22061879
+        if (deadline.matches("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")) {
+            this.deadline = LocalDate.parse(deadline);
+            hasProperDeadline = true;
+        } else {
+            hasProperDeadline = false;
+        }
     }
 
     /**
@@ -39,6 +47,12 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         //Adds task type indicator to super.toString which returns done status and task name, followed by deadline.
-return String.format("[D]%s (by: %s)", super.toString(), deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy")));
+        String deadlineToPrint;
+        if (hasProperDeadline) {
+            deadlineToPrint = deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        } else {
+            deadlineToPrint = deadlineString;
+        }
+        return String.format("[D]%s (by: %s)", super.toString(), deadlineToPrint);
     }
 }
