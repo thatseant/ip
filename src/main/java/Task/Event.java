@@ -2,6 +2,8 @@ package Task;
 
 public class Event extends Task {
 
+    private static final String EVENT_PRINT_FORMAT = "[E]%s (at: %s)";
+
     private String time;
 
     /**
@@ -34,6 +36,6 @@ public class Event extends Task {
     @Override
     public String toString() {
         //Adds task type indicator to super.toString which returns completion status and task name, followed by event time.
-        return String.format("[E]%s (at: %s)", super.toString(), time);
+        return String.format(EVENT_PRINT_FORMAT, super.toString(), time);
     }
 }

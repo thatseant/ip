@@ -2,13 +2,18 @@ package Task;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
+
+    //Regex for yyyy-mm-dd adapted from https://stackoverflow.com/a/22061879
+    private static final String DATE_FORMAT_REGEX =  "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
+    private static final String DATE_PRINT_FORMAT = "MMM dd yyyy";
+    private static final String DEADLINE_PRINT_FORMAT = "[D]%s (by: %s)";
 
     private Boolean hasProperDeadline;
     private LocalDate deadline;
     private String deadlineString;
+
 
     /**
      * Constructor for Deadline object.
@@ -18,8 +23,7 @@ public class Deadline extends Task {
     public Deadline(String name, String deadline) {
         super(name);
         deadlineString = deadline;
-        //Regex adapted from https://stackoverflow.com/a/22061879
-        if (deadline.matches("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")) {
+        if (deadline.matches(DATE_FORMAT_REGEX)) {
             this.deadline = LocalDate.parse(deadline);
             hasProperDeadline = true;
         } else {
@@ -49,10 +53,10 @@ public class Deadline extends Task {
         //Adds task type indicator to super.toString which returns done status and task name, followed by deadline.
         String deadlineToPrint;
         if (hasProperDeadline) {
-            deadlineToPrint = deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+            deadlineToPrint = deadline.format(DateTimeFormatter.ofPattern(DATE_PRINT_FORMAT));
         } else {
             deadlineToPrint = deadlineString;
         }
-        return String.format("[D]%s (by: %s)", super.toString(), deadlineToPrint);
+        return String.format(DEADLINE_PRINT_FORMAT, super.toString(), deadlineToPrint);
     }
 }

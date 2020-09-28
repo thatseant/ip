@@ -4,6 +4,12 @@ package Task;
  * Parent class of all Task objects i.e. Deadline, Event, Todo.
  */
 public class Task {
+
+    private static final String TICK_CHAR = "\u2713";
+    private static final String CROSS_CHAR = "\u2718";
+    private static final String GENERIC_TASK_PRINT_FORMAT = "[%s] %s";
+    private static final String GENERIC_TASK_SAVE_FORMAT = "%s | %s";
+
     private boolean isDone;
     private String name;
     private static int numberOfTasks;
@@ -52,7 +58,7 @@ public class Task {
      * @return raw string with task completion status and name.
      */
     public String toRawData() {
-        return String.format("%s | %s", isDone, name);
+        return String.format(GENERIC_TASK_SAVE_FORMAT, isDone, name);
     }
 
     /**
@@ -62,12 +68,12 @@ public class Task {
     public String toString() {
         String tickOrCrossChar;
         if (isDone) {
-            tickOrCrossChar = "\u2713";
+            tickOrCrossChar = TICK_CHAR;
         } else {
-            tickOrCrossChar = "\u2718";
+            tickOrCrossChar = CROSS_CHAR;
         }
 
-        return String.format("[%s] %s", tickOrCrossChar, name);
+        return String.format(GENERIC_TASK_PRINT_FORMAT, tickOrCrossChar, name);
     }
 
 }

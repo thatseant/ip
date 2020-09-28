@@ -13,11 +13,18 @@ import Task.Deadline;
 import Task.Event;
 import Task.Todo;
 
-
-
 public class Storage {
     private String filePath;
     static ArrayList<Task> tasks = new ArrayList<>();
+    public static final String TODO = "T";
+    public static final String DEADLINE = "D";
+    public static final String EVENT = "E";
+    public static final String PARAM_DIVIDER_REGEX = " \\| ";
+    public static final int TASK_TYPE_INDEX = 0;
+    public static final int TASK_STATUS_INDEX = 1;
+    public static final int TASK_NAME_INDEX = 2;
+    public static final int TASK_DATE_INDEX = 3;
+
 
     /**
      * Storage constructor.
@@ -55,21 +62,21 @@ public class Storage {
         File f = new File(filePath); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
         while (s.hasNext()) {
-            String[] taskParameters = s.nextLine().split(" \\| ");
-            String taskType = taskParameters[0];
-            Boolean isDone = Boolean.parseBoolean(taskParameters[1].trim());
-            String taskName = taskParameters[2];
+            String[] taskParameters = s.nextLine().split(PARAM_DIVIDER_REGEX);
+            String taskType = taskParameters[TASK_TYPE_INDEX];
+            Boolean isDone = Boolean.parseBoolean(taskParameters[TASK_STATUS_INDEX].trim());
+            String taskName = taskParameters[TASK_NAME_INDEX];
 
             switch (taskType) {
-            case "T":
+            case TODO:
                 tasks.add(new Todo(taskName));
                 break;
-            case "D":
-                String date = taskParameters[3];
+            case DEADLINE:
+                String date = taskParameters[TASK_DATE_INDEX];
                 tasks.add(new Deadline(taskName, date));
                 break;
-            case "E":
-                date = taskParameters[3];
+            case EVENT:
+                date = taskParameters[TASK_DATE_INDEX];
                 tasks.add(new Event(taskName, date));
                 break;
             default:

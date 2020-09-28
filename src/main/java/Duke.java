@@ -1,16 +1,18 @@
+import java.util.ArrayList;
+
 import Command.Command;
 import Storage.Storage;
 import Parser.Parser;
 import Task.Task;
 import Ui.Ui;
 
-import java.util.ArrayList;
-
 /**
  * Entry point of the Duke application.
  * Initializes the application and starts the interaction with the user.
  */
 public class Duke {
+    public static final String STORAGE_FILE_LOCATION = "tasks.txt";
+
     static Storage storage;
     static ArrayList<Task> tasks = new ArrayList<>();
     static Ui ui;
@@ -43,6 +45,6 @@ public class Duke {
      * @Param args command line arguments
      */
     public static void main(String[] args) {
-        new Duke("tasks.txt").run();
+        new Duke(STORAGE_FILE_LOCATION).run();
     }
 }
