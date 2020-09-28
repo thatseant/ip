@@ -2,7 +2,7 @@
 
 Duke is a task management software that keeps track of todos, deadlines and events.
 
-Please refer to the Setting Up section to learn how to set up Duke.
+Please refer to the [Setting Up documentation](https://github.com/thatseant/ip/blob/master/README.md) to learn how to set up Duke.
 
 
 
