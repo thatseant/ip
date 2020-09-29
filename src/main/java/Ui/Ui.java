@@ -36,6 +36,9 @@ public class Ui {
         System.out.println("Bye. Hope to see you again soon!");
     }
 
+    /**
+     * Prints Horizontal Line
+     */
     public void printHorizontalLine() {
         System.out.println("____________________________________________________________");
     }
