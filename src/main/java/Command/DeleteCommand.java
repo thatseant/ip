@@ -39,7 +39,7 @@ public class DeleteCommand extends Command {
             System.out.println("Please specify the task you would like to mark as done in integer format.");
         } catch (NullPointerException e) {
             System.out.println("Task not found. Please reenter command with valid task number.");
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Task not found. Please reenter command with valid task number.");
         }
     }

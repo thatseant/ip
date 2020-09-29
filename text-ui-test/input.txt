@@ -1,10 +1,24 @@
 todo Buy Groceries
-deadline CS2113T Tutorial /by Thursday
+deadline CS2113T Tutorial /by 2020-09-06
 event CS2113T Meeting /at Tuesday 2pm
 list
-done 1
+deadline User guide /by tomorrow
+deadline Oral presentation /by next fri
+done 2
 list
-todo
-deadline CS2113T
-event CS2113T
+todo luke's birthday prep
+event Swim meet /at 4th December
+event Medical appointment /at 13th Nov 7am
+find Swim
+find Medical
+find guide
+delete 3
+delete 12
+done 1
+deadline submit form
+event concert
+deadline submit form /at 5pm
+event concert /by tomorrow
+done 6
+done 10
 bye

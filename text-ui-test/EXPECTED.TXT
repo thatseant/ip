@@ -1,3 +1,4 @@
+File not found. No previous tasks loaded.
 Hello from
 ____        _        
 |  _ \ _   _| | _____ 
@@ -11,22 +12,55 @@ Got it. I've added this task:
 [T][?] Buy Groceries
 Now you have 1 tasks on the list.
 Got it. I've added this task: 
-[D][?] CS2113T Tutorial (by: Thursday)
+[D][?] CS2113T Tutorial (by: Sep 06 2020)
 Now you have 2 tasks on the list.
 Got it. I've added this task: 
 [E][?] CS2113T Meeting (at: Tuesday 2pm)
 Now you have 3 tasks on the list.
 Here are the tasks in your list:
 1.[T][?] Buy Groceries
-2.[D][?] CS2113T Tutorial (by: Thursday)
+2.[D][?] CS2113T Tutorial (by: Sep 06 2020)
 3.[E][?] CS2113T Meeting (at: Tuesday 2pm)
+Got it. I've added this task: 
+[D][?] User guide (by: tomorrow)
+Now you have 4 tasks on the list.
+Got it. I've added this task: 
+[D][?] Oral presentation (by: next fri)
+Now you have 5 tasks on the list.
 Nice! I've marked this task as done: 
-[T][?] Buy Groceries
+[D][?] CS2113T Tutorial (by: Sep 06 2020)
 Here are the tasks in your list:
 1.[T][?] Buy Groceries
-2.[D][?] CS2113T Tutorial (by: Thursday)
+2.[D][?] CS2113T Tutorial (by: Sep 06 2020)
 3.[E][?] CS2113T Meeting (at: Tuesday 2pm)
-OOPS!!! The description of todo cannot be empty.
+4.[D][?] User guide (by: tomorrow)
+5.[D][?] Oral presentation (by: next fri)
+Got it. I've added this task: 
+[T][?] luke's birthday prep
+Now you have 6 tasks on the list.
+Got it. I've added this task: 
+[E][?] Swim meet (at: 4th December)
+Now you have 7 tasks on the list.
+Got it. I've added this task: 
+[E][?] Medical appointment (at: 13th Nov 7am)
+Now you have 8 tasks on the list.
+Here are the matching tasks in your list:
+1. [E][?] Swim meet (at: 4th December)
+Here are the matching tasks in your list:
+1. [E][?] Medical appointment (at: 13th Nov 7am)
+Here are the matching tasks in your list:
+1. [D][?] User guide (by: tomorrow)
+Noted. I've removed this task:
+[E][?] CS2113T Meeting (at: Tuesday 2pm)
+Now you have 7 tasks in the list.
+Task not found. Please reenter command with valid task number.
+Nice! I've marked this task as done: 
+[T][?] Buy Groceries
 Missing deadline or deadline not specified in correct format.
 Missing event time or time not specified in correct format.
+Missing deadline or deadline not specified in correct format.
+Missing event time or time not specified in correct format.
+Nice! I've marked this task as done: 
+[E][?] Swim meet (at: 4th December)
+Task not found. Please reenter command with valid task number.
 Bye. Hope to see you again soon!
