@@ -8,59 +8,107 @@ ____        _
 
 Hello! I'm Duke
 What can I do for you?
+____________________________________________________________
 Got it. I've added this task: 
 [T][?] Buy Groceries
 Now you have 1 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Got it. I've added this task: 
 [D][?] CS2113T Tutorial (by: Sep 06 2020)
 Now you have 2 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Got it. I've added this task: 
 [E][?] CS2113T Meeting (at: Tuesday 2pm)
 Now you have 3 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Here are the tasks in your list:
 1.[T][?] Buy Groceries
 2.[D][?] CS2113T Tutorial (by: Sep 06 2020)
 3.[E][?] CS2113T Meeting (at: Tuesday 2pm)
+____________________________________________________________
+____________________________________________________________
 Got it. I've added this task: 
 [D][?] User guide (by: tomorrow)
 Now you have 4 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Got it. I've added this task: 
 [D][?] Oral presentation (by: next fri)
 Now you have 5 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Nice! I've marked this task as done: 
 [D][?] CS2113T Tutorial (by: Sep 06 2020)
+____________________________________________________________
+____________________________________________________________
 Here are the tasks in your list:
 1.[T][?] Buy Groceries
 2.[D][?] CS2113T Tutorial (by: Sep 06 2020)
 3.[E][?] CS2113T Meeting (at: Tuesday 2pm)
 4.[D][?] User guide (by: tomorrow)
 5.[D][?] Oral presentation (by: next fri)
+____________________________________________________________
+____________________________________________________________
 Got it. I've added this task: 
 [T][?] luke's birthday prep
 Now you have 6 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Got it. I've added this task: 
 [E][?] Swim meet (at: 4th December)
 Now you have 7 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Got it. I've added this task: 
 [E][?] Medical appointment (at: 13th Nov 7am)
 Now you have 8 tasks on the list.
+____________________________________________________________
+____________________________________________________________
 Here are the matching tasks in your list:
 1. [E][?] Swim meet (at: 4th December)
+____________________________________________________________
+____________________________________________________________
 Here are the matching tasks in your list:
 1. [E][?] Medical appointment (at: 13th Nov 7am)
+____________________________________________________________
+____________________________________________________________
 Here are the matching tasks in your list:
 1. [D][?] User guide (by: tomorrow)
+____________________________________________________________
+____________________________________________________________
 Noted. I've removed this task:
 [E][?] CS2113T Meeting (at: Tuesday 2pm)
 Now you have 7 tasks in the list.
+____________________________________________________________
+____________________________________________________________
 Task not found. Please reenter command with valid task number.
+____________________________________________________________
+____________________________________________________________
 Nice! I've marked this task as done: 
 [T][?] Buy Groceries
+____________________________________________________________
+____________________________________________________________
 Missing deadline or deadline not specified in correct format.
+____________________________________________________________
+____________________________________________________________
 Missing event time or time not specified in correct format.
+____________________________________________________________
+____________________________________________________________
 Missing deadline or deadline not specified in correct format.
+____________________________________________________________
+____________________________________________________________
 Missing event time or time not specified in correct format.
+____________________________________________________________
+____________________________________________________________
 Nice! I've marked this task as done: 
 [E][?] Swim meet (at: 4th December)
+____________________________________________________________
+____________________________________________________________
 Task not found. Please reenter command with valid task number.
+____________________________________________________________
+____________________________________________________________
 Bye. Hope to see you again soon!
+____________________________________________________________

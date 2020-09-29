@@ -83,6 +83,7 @@ public class Parser {
                         taskName = userInput.split(" ", 2)[1].split(" /")[0];
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("OOPS!!! The description of " + taskType + " cannot be empty.");
+                        taskType = "null";
                     }
 
                     switch (taskType) {

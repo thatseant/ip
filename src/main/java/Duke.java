@@ -34,8 +34,10 @@ public class Duke {
         while (!isExit) {
             //Processes user commands
             String userInput = ui.readCommand();
+            ui.printHorizontalLine();
             Command c = Parser.parse(userInput, storage);
             c.execute(tasks, ui, storage);
+            ui.printHorizontalLine();
             isExit = c.isExit();
         }
     }
